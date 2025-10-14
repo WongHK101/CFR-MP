@@ -263,21 +263,25 @@ python ./Util/metrics_reg.py
 | RFIVF         | 1.7874 | 0.8726 | 0.2359 | 0.1355 | 0.3749 | 2321.7069 |
 | IMF           | 2.3733 | 0.7157 | 0.5042 | 0.2620 | 0.3986 | 1297.7976 |
 | IVFWSR        | 1.9872 | <span style="color:orange; font-weight:bold">0.5890</span> | 0.4095 | 0.2306 | 0.3894 | 1647.9761 |
+| MulFS-CAP      | 1.9354 | 0.8403 | 0.3552 | 0.2575 | <span style="color:orange; font-weight:bold">0.4297 | 1000.7390 |
 | **Ours**      | <span style="color:red; font-weight:bold">4.3598</span> | <span style="color:red; font-weight:bold">0.4122</span> | <span style="color:red; font-weight:bold">0.7877</span> | <span style="color:red; font-weight:bold">0.3979</span> | <span style="color:red; font-weight:bold">0.4857</span> | <span style="color:red; font-weight:bold">636.7558</span> |
 
+---
 
 ### 🏍️ M3FD Dataset
 | Method        | $Q_{MI}$ ↑ | $Q_{CE}$ ↓ | $Q_{VIF}$ ↑ | $Q_{AB/F}$ ↑ | $Q_{CB}$ ↑ | $Q_{CV}$ ↓ |
 | ------------- | ---------- | ---------- | ----------- | ------------ | ---------- | ---------- |
 | UMF-CMGR      | 2.4425 | 1.2821 | 0.4351 | 0.1894 | 0.3909 | 1640.6968 |
-| SuperFusion   | <span style="color:orange; font-weight:bold">2.9868</span> | 1.3335 | 0.5982 | <span style="color:orange; font-weight:bold">0.4098</span> | 0.4199 | <span style="color:orange; font-weight:bold">885.7659</span>  |
-| MURF          | 2.3557 | 1.3906 | 0.5393 | 0.3821 | <span style="color:orange; font-weight:bold">0.4251</span> | 1295.2825 |
+| SuperFusion   | <span style="color:orange; font-weight:bold">2.9868</span> | 1.3335 | <span style="color:orange; font-weight:bold">0.5982</span> | <span style="color:orange; font-weight:bold">0.4098</span> | 0.4199 | <span style="color:orange; font-weight:bold">885.7659</span>  |
+| MURF          | 2.3557 | 1.3906 | 0.5393 | 0.3821 | 0.4251 | 1295.2825 |
 | SemLA         | 2.5120 | 1.4842 | 0.5268 | 0.2949 | 0.3613 | 1521.0582 |
 | RFIVF         | 1.9926 | <span style="color:orange; font-weight:bold">1.1140</span> | 0.4355 | 0.1939 | 0.4191 | 1608.0113 |
 | IMF           | 2.5745 | 1.3291 | 0.5360 | 0.2602 | 0.4301 | 900.7963 |
 | IVFWSR        | 2.2129 | 1.1828 | 0.4608 | 0.2375 | 0.4354 | 1424.2831|
-| **Ours**      | <span style="color:red; font-weight:bold">4.1585</span> | <span style="color:red; font-weight:bold">0.8221</span> | <span style="color:red; font-weight:bold">0.8083</span> | <span style="color:red; font-weight:bold">0.4641</span> | <span style="color:red; font-weight:bold">0.4426</span> | <span style="color:red; font-weight:bold">766.2438</span> |
+| MulFS-CAP     | 2.1795 | 1.3391 | 0.3741 | 0.2319 | <span style="color:red; font-weight:bold">0.4462</span> | 975.3095 |
+| **Ours**      | <span style="color:red; font-weight:bold">4.1585</span> | <span style="color:red; font-weight:bold">0.8221</span> | <span style="color:red; font-weight:bold">0.8083</span> | <span style="color:red; font-weight:bold">0.4641</span> | <span style="color:orange; font-weight:bold">0.4426</span> | <span style="color:red; font-weight:bold">766.2438</span> |
 
+---
 
 ### 🌆 MSRS Dataset
 | Method        | $Q_{MI}$ ↑ | $Q_{CE}$ ↓ | $Q_{VIF}$ ↑ | $Q_{AB/F}$ ↑ | $Q_{CB}$ ↑ | $Q_{CV}$ ↓ |
@@ -289,7 +293,8 @@ python ./Util/metrics_reg.py
 | RFIVF         | 1.3331 | 0.8183| 0.3786 | 0.1586 | 0.3265 | 2168.4381 |
 | IMF           | 2.1115 | 1.6757 | 0.5201 | 0.2755 | 0.4488 | 783.3043 |
 | IVFWSR        | 2.2742 | <span style="color:red; font-weight:bold">0.4942</span> | 0.4793 | 0.2242 | 0.4520 | 862.8701 |
-| **Ours**      | <span style="color:red; font-weight:bold">4.2775</span> | <span style="color:orange; font-weight:bold">0.5673</span> | <span style="color:red; font-weight:bold">0.8594</span> | <span style="color:red; font-weight:bold">0.5742</span> | <span style="color:red; font-weight:bold">0.5226</span> | <span style="color:red; font-weight:bold">466.9209</span> |
+| MulFS-CAP      | 1.6612 | <span style="color:orange; font-weight:bold">0.5308</span> | 0.3569 | 0.2941 | 0.4423 | 1002.9340 |
+| **Ours**      | <span style="color:red; font-weight:bold">4.2775</span> | 0.5673 | <span style="color:red; font-weight:bold">0.8594</span> | <span style="color:red; font-weight:bold">0.5742</span> | <span style="color:red; font-weight:bold">0.5226</span> | <span style="color:red; font-weight:bold">466.9209</span> |
 
 
 📌 *注：每一列中，红色加粗数值表示最佳结果，橙色加粗数值表示次优结果。注意：在GitHub上可能无法显示颜色，但在本地Markdown编辑器中可正常高亮。*
