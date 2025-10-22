@@ -247,6 +247,9 @@ python ./Util/metrics_reg.py
 ### Parameter Analysis: Joint Optimization
 ![Parameter Analysis Joint Optimization](./Figures/PaperAcademic/figure9.png)
 
+### Object Detection and Semantic Segmentation
+The related models will be updated and uploaded soon.
+
 ### Model: Parameter Quantity + Calculation
 ```python
 cd ./ME-PMA
