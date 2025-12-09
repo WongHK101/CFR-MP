@@ -318,7 +318,7 @@ This project uses the MIT License. See [LICENSE](LICENSE) file.
 
 
 ## Contact
-Thank you for your review and attention. If you have any questions, please contact us by email at yida_myth@163.com. We will get back to you as soon as possible, and you may also raise your questions through the Issues page.
+Thank you for your attention. If you have any questions, please contact us by email at yida_myth@163.com. We will get back to you as soon as possible, and you may also raise your questions through the Issues page.
 
 
 ## Star History
