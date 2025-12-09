@@ -66,6 +66,8 @@
 </h3>
 </div>
 
+---
+
 ## 1. Introduction
 We propose an end-to-end infrared-visible image fusion network (ME-PMA) with feature-level registration, featuring:
 
@@ -202,15 +204,8 @@ control + z
 ### Registration + Fusion Comparison Visualization
 ![Registration + Fusion](./Figures/PaperAcademic/figure3.png)
 
-
-
-
 ### Joint Optimization Comparison Visualization
 ![Joint Optimization](./Figures/PaperAcademic/figure4.png)
-
-
-
-
 
 
 ### Evaluation Metrics
@@ -238,7 +233,7 @@ You can get our detailed quantitative evaluation metrics, using the following ex
 python ./Util/metrics_reg.py
 ```
 
-> For convenience, you can directly perform metric tests to get results from the paper. However, specific details will be further supplemented after acceptance of the paper;
+> For convenience, the provided metric scripts allow you to directly reproduce the results reported in the paper. Further implementation details will be added in future updates.
 
 > Note that the registration evaluation metrics are the average of the three datasets.
 
@@ -258,12 +253,8 @@ python ./Util/metrics_reg.py
 </p>
 
 
-
-
 📌 *Note: In each column, values in **red bold** are the best, and values in **orange bold** are the second-best.*
 
-
----
 
 
 ### Joint Optimization Results
@@ -279,22 +270,19 @@ python ./Util/metrics_reg.py
 
 📌 *Note: In each column, values in **red bold** are the best, and values in **orange bold** are the second-best.*
 
----
-
-
 
 
 ### Only Registration Performance Comparison Results
 ![Registration Performance](./Figures/PaperAcademic/figure7.png)
 
-### Parameter Analysis: Registration + Fusion
-![Parameter Analysis reg+fus](./Figures/PaperAcademic/figure8.png)
 
 ### Parameter Analysis: Joint Optimization
 ![Parameter Analysis Joint Optimization](./Figures/PaperAcademic/figure9.png)
 
+
 ### Object Detection and Semantic Segmentation
 The related models will be updated and uploaded soon.
+
 
 ### Model: Parameter Quantity + Calculation
 ```python
@@ -306,14 +294,14 @@ python -m Model.Architecture.RegImageFusModel
 ## Citation
 If you use this project's code, please cite our paper:
 ```
-@article{xxx_2025_ME-PMA,
-  title={Joint Multi-View Embedding with Progressive Multi-Scale Alignment for Unaligned Infrared-Visible Image Fusion},
-  author={xxx},
-  journal={xxx},
-  volume={xx},
-  number={x},
-  pages={x--x},
-  year={2025}
+@article{2026_ME-PMA,
+  title   = {Joint multi-view embedding with progressive multi-scale alignment for unaligned infrared-visible image fusion},
+  author  = {Chen, Yida and Zhang, Yafei and Li, Huafeng and Yu, Zhengtao and Liu, Yu},
+  journal = {Information Fusion},
+  volume  = {128},
+  pages   = {103960},
+  year    = {2026},
+  doi     = {10.1016/j.inffus.2025.103960}
 }
 ```
 
@@ -322,7 +310,7 @@ This project uses the MIT License. See [LICENSE](LICENSE) file.
 
 
 ## Contact
-Thank you for your review and attention. If you have any questions, please contact us by email: yida_myth@163.com (We will further improve the project after acceptance to provide help for you)
+Thank you for your review and attention. If you have any questions, please contact us by email at yida_myth@163.com. We will get back to you as soon as possible, and you may also raise your questions through the Issues page.
 
 
 ## Star History
