@@ -59,8 +59,9 @@
 
 <br>
 
-[README-Chinese](./README_CN.md) | [README-English](./README.md) 
-
+<div align="center">
+[README-Chinese](./README_CN.md) | [README-English](./README.md)
+</div>
 
 ## 1. Introduction
 We propose an end-to-end infrared-visible image fusion network (ME-PMA) with feature-level registration, featuring:
