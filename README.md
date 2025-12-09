@@ -13,8 +13,6 @@
 [![Code](https://img.shields.io/badge/Code-ME--PMA-black?style=for-the-badge&logo=github)](https://github.com/yidamyth/ME-PMA)
 <br>
 
-</div>
-
 
 <div align="center">
 
