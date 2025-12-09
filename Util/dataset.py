@@ -67,8 +67,6 @@ class IRVISDataset(Dataset):
 
         # 变换红外光与可见光
         ir_image, vis_image = self.transform.get_transform(ir_image, vis_image)
-        # save_image(ir_image, f"/Users/yida/Desktop/test/ir_vi/ir/{idx}_ir.png")
-        # save_image(vis_image, f"/Users/yida/Desktop/test/ir_vi/vis/{idx}_vis.png")
 
         # 模式选择
         if self.train_mode == 'train':

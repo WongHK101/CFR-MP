@@ -243,12 +243,6 @@ class Train_Phase2:
         test_dataloader = DataLoader(testset, batch_size=1, num_workers=args.num_workers, shuffle=True,
                                      pin_memory=True, drop_last=False)
 
-        # 第二阶段训练变形场，初始化模型方法
-        # model = RegImageFusModel(registration=args.registration, use_bn=args.use_bn, distil=False)  # args.use)bn
-        # model = model.to(device)
-        # # 加载预训练的模型权重
-        # model.load_state_dict(torch.load(phase2_ModelPath, map_location=device), strict=False)
-
         model = torch.load(phase2_ModelPath, map_location=device)
         model.registration = args.registration
         model.use_bn = args.use_bn
@@ -257,8 +251,7 @@ class Train_Phase2:
 
         # 固定模型参数
         deformable_transformation = model.deformable_transformation  # 初始化的变形场模块
-        # feature_fusion = model.feature_fusion  # 初始化的变形场模块
-        # feature_reconstruction = model.feature_reconstruction  # 初始化的变形场模块
+
 
         # 冻结整个模型的参数
         for name, param in model.named_parameters():
@@ -286,7 +279,6 @@ class Train_Phase2:
         # 3. 定义损失函数和优化器
         if args.opt_type == 'Adam':
             print("选择使用 Adam 优化器...")
-            # optimizer = optim.Adam(deform_field_predictor.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
             optimizer = optim.Adam(
                 [
                     {'params': deformable_transformation.parameters()},
@@ -298,21 +290,14 @@ class Train_Phase2:
             if args.scheduler[0] == 'True':
                 print('使用学习率更新策略...', args.scheduler)
                 scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.num_epochs, eta_min=1e-6)  # T_max=500, 从0-500轮学习率越来越小；500-1000在越来越大，确实应该设置为epoch或者epoch/2
-                # scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=int(args.scheduler[1]), gamma=0.1)
-            # scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[100, 200], gamma=0.1)
-            # 学习率衰减策略
-            # scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.96)
-            # scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=10, verbose=True)
+
         elif args.opt_type == 'RMSprop':
             print("选择使用 RMSprop 优化器...")
             optimizer = optim.RMSprop(deformable_transformation.parameters(), lr=args.learning_rate, alpha=0.99,
                                       eps=1e-08,
                                       weight_decay=args.weight_decay, momentum=0,
                                       centered=False)
-            # optimizer = optim.RMSprop(model.parameters(), lr=0.001, alpha=0.99, eps=1e-08,
-            #                           weight_decay=0, momentum=0,
-            #                           centered=False)
-            # scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[100, 200], gamma=0.1)
+
 
         else:
             print("请选择正确的优化器...")
@@ -340,16 +325,7 @@ class Train_Phase2:
                     # 训练步骤1 -> 得到对齐的融合图像以及特征 -> 用于监督未配准图像融合
                     # # 生成偏移图像对, 对红外图像添加仿射和弹性变换
                     ir_move = image_transformer.transform(ir_img)
-                    # with torch.no_grad():
-                    #     model_test.eval()
-                    #     model_test.registration = True
-                    #     model_dict_test = model_test(ir_img=ir_img, vis_img=vis_img)
-                    #     fus_img_test, recon_ir_gradient = model_dict_test['fus_img'], model_dict_test['recon_gradient']['recon_ir_gradient']
-                    #     # 未对齐直接图像融合结果
-                    #     unreg_model_dict = model_test(ir_img=ir_move, vis_img=vis_img)
-                    #     unreg_img_test = unreg_model_dict['fus_img']
-                    # # 训练步骤2 -> 得到未对齐的融合图像以及特征
-                    # model.eval()  # TODO 这儿有待讨论，感觉不用加上eval的 ; 这个必须要有，不然没办法生成融合图像
+
                     model.registration = False
                     model_dict_move = model(ir_img=ir_move, vis_img=vis_img)
                     flow, reg_fus_img, reg_recon_ir_gradient = model_dict_move['flow'], model_dict_move['unreg_fus_img'], model_dict_move['reg_recon_ir_gradient']
@@ -367,9 +343,7 @@ class Train_Phase2:
                     loss2 = NCC_Loss.loss(y_true=ir_img, y_pred=ir_reg)
 
                     # 损失3 应该在加一个自监督的损失, 用融合图像来进行自监督可能梯度流向不那么明确，试试用这个重建的红外图像来进行自监督
-                    # loss3 = F.l1_loss(reg_recon_ir_gradient, recon_ir_gradient)
                     loss3 = F.l1_loss(reg_recon_ir_gradient, ir_img)
-                    # loss3 = NCC_Loss.loss(y_true=reg_recon_ir_gradient, y_pred=recon_ir_gradient)
 
                     loss = loss1 + loss2 + loss3
                     loss.backward()
@@ -393,10 +367,7 @@ class Train_Phase2:
                 tracker.save_fus(fus_img=ir_img, img_path=model_id + '-P2_IRImg.png')
                 tracker.save_fus(fus_img=vis_img, img_path=model_id + '-P2_VISImg.png')
                 tracker.save_fus(fus_img=reg_fus_img, img_path=model_id + '-P2_RegFusImg.png')
-                # tracker.save_fus(fus_img=fus_img_test, img_path=model_id + '-P2_FusImg.png')
-                # tracker.save_fus(fus_img=recon_ir_gradient, img_path=model_id + '-P2_Recon_ir_Img.png')
                 tracker.save_fus(fus_img=reg_recon_ir_gradient, img_path=model_id + '-P2_Reg_Recon_ir_Img.png')
-                # tracker.save_fus(fus_img=unreg_img_test, img_path=model_id + '-P2_UnRegFusImg.png')
 
                 # 实时保存模型 last和best
                 # 5.保存best模型 -> 应该是计算一个batch的loss而不是每个step的loss

@@ -71,8 +71,6 @@ class RegImageFusModel(nn.Module):
         #
         # 预测变形场模块
         self.deformable_transformation = DeformableFieldPredictor(channels_up, use_bn=use_bn)
-        # self.ir_concat_align_decoder = IRALign_Decoder_Model(in_channels=channels_up, use_bn=use_bn)
-        # self.fus_feature_align_decoder = IRALign_Decoder_Model(in_channels=channels_up, use_bn=use_bn)
 
         # 特征融合模块
         self.feature_fusion = Feature_Fusion_Model(in_channels=channels_up, use_bn=use_bn)

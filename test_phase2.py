@@ -43,15 +43,6 @@ def test():
     dataloader_test = DataLoader(dataset_test, batch_size=1, num_workers=4, shuffle=True,
                                  pin_memory=True, drop_last=False)
 
-    # 2. 初始化模型方法1
-    # model = RegImageFusModel(registration=True, use_bn=True)
-    # model.load_state_dict(torch.load(args.model_path, map_location=device), strict=False)
-
-    # # 初始化模型方法2
-    # model = RegImageFusModel(registration=False, use_bn=True, distil=False)
-    # model = model.to(device)
-    # # 加载预训练的模型权重
-    # model.load_state_dict(torch.load(args.model_path, map_location=device), strict=False)
 
     # 初始化模型方法2: 加载模型全部参数
     model = torch.load(args.model_path, map_location=device)

@@ -26,7 +26,6 @@ from Util.training_monitor import Tracker
 from Util.transform import DataTransform
 
 # 检查错误
-# autograd.set_detect_anomaly(True)
 torch.autograd.set_detect_anomaly(True)
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -93,10 +92,6 @@ def main():
         optimizer = optim.RMSprop(model.parameters(), lr=args.learning_rate, alpha=0.99, eps=1e-08,
                                   weight_decay=args.weight_decay, momentum=0,
                                   centered=False)
-        # optimizer = optim.RMSprop(model.parameters(), lr=0.001, alpha=0.99, eps=1e-08,
-        #                           weight_decay=0, momentum=0,
-        #                           centered=False)
-        # scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[100, 200], gamma=0.1)
 
     else:
         print("请选择正确的优化器...")
@@ -140,15 +135,10 @@ def main():
                 print_info = [loss_info["loss1_info"], loss_info["loss2_info"]]
                 # 更新 tqdm 后缀，显示 epoch、step 和 loss；\31m是红色 \33m是蓝色，为了在文本末尾重置格式（回到默认格式），通常会使用 \33[0m
                 t.set_postfix_str(f"Step: {step + 1}/{len(dataloader)}, Loss: {loss.item():.4f}")
-                # 输出训练过程
-                # if (step + 1) % 10 == 0:
-                #     print(f"Epoch [{epoch + 1}/{num_epochs}], Step [{step + 1}/{len(dataloader)}], Loss: {loss.item()}\n")
 
                 # 保存损失
                 tracker.add_loss(loss)
-                # # 实时保存
-                # tracker.plot_loss(save_path=model_id + '-LossPlt.png', now_epoch=epoch + 1, dataset=args.dataset, best_epoch=loss_best['epoch'])
-                # tracker.save_fus(fus_img=fus_img, img_path=model_id + '-FusImg.png')
+
 
             # 实时保存模型 last和best
             # 5.保存best模型 -> 应该是计算一个batch的loss而不是每个step的loss
@@ -166,11 +156,6 @@ def main():
             # 实时每个Epoch保存
             tracker.plot_loss(save_path=model_id + '-LossPlt.png', now_epoch=epoch + 1, dataset=args.dataset, best_epoch=loss_best['epoch'])
             tracker.save_fus(fus_img=fus_img, img_path=model_id + '-FusImg.png')
-            # 新增重建的红外与可见光图像
-            # tracker.save_fus(fus_img=model_dict['recon_img']['recon_ir'], img_path=model_id + '-ReconIr.png')
-            # tracker.save_fus(fus_img=model_dict['recon_img']['recon_vis'], img_path=model_id + '-ReconVis.png')
-            # tracker.save_fus(fus_img=model_dict['recon_img']['de_recon_ir'], img_path=model_id + '-DeReconIr.png')
-            # tracker.save_fus(fus_img=model_dict['recon_img']['de_recon_vis'], img_path=model_id + '-DeReconVis.png')
             tracker.save_fus(fus_img=model_dict['recon_gradient']['recon_ir_gradient'], img_path=model_id + '-ReconIrGradient.png')
             tracker.save_fus(fus_img=model_dict['recon_gradient']['recon_vis_gradient'], img_path=model_id + '-ReconVisGradient.png')
             tracker.save_fus(fus_img=ir_img, img_path=model_id + '-ir.png')

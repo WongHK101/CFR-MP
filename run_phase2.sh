@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 绕过 source 命令，直接执行 conda 的初始化
+# 绕过 source 命令，直接执行 conda 的初始化，注意下面要修改成自己的anaconda路径
 eval "$(/home/yida/anaconda3/bin/conda shell.bash hook)"
 # 切换到目标环境
 conda activate pytorch112
