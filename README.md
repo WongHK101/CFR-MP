@@ -300,7 +300,7 @@ python -m Model.Architecture.RegImageFusModel
 
 ## 🥰 Acknowledgments
 
-The overall architecture of this project was independently designed by the author. However, parts of the implementation reference the following excellent open-source works:
+The overall architecture of this project was independently designed by the author@Yida Chen. However, parts of the implementation reference the following excellent open-source works:
 
 ### Code References
 - **CDDFuse: Correlation-Driven Dual-Branch Feature Decomposition for Multi-Modality Image Fusion** 
