@@ -53,7 +53,8 @@
 ![Image Registration](https://img.shields.io/badge/Image-Registration-ffcc99?style=flat-square-4c1)
 
 <div style="background-color: #fff8c5; color: #000000; padding: 10px; border-left: 4px solid #f0ad4e; border-radius: 4px;">
-  <strong> Our paper is currently under peer review. We sincerely appreciate your interest and support. The README will be further improved after acceptance.</strong>
+  <strong> Our paper has been accepted for publication in Information Fusion (2026). We would like to express our sincere gratitude to the reviewers, editors, and collaborators for their constructive feedback and continuous support.
+</strong>
 </div>
 
 <br>
