@@ -73,59 +73,12 @@ class FusionLoss:
         """
         # 如果配准图像对
         if self.registration:
-            # # 解码特征的一致性损失
-            # ir_decoder_loss = self.private_decoded_align_loss(self.ir_detail_feature, self.ir_decoder_feature)
-            # vis_decoder_loss = self.private_decoded_align_loss(self.vis_detail_feature, self.vis_decoder_feature)
-            # decoder_loss = ir_decoder_loss + vis_decoder_loss
-            #
-            # # 对比损失
-            # ir_contrastive_loss = self.ir_vis_contrastive_loss(shared_feature1=self.ir_global_feature,
-            #                                                    shared_feature2=self.vis_global_feature,
-            #                                                    private_feature1=self.ir_decoder_feature)
-            # vis_contrastive_loss = self.ir_vis_contrastive_loss(shared_feature1=self.vis_global_feature,
-            #                                                     shared_feature2=self.ir_global_feature,
-            #                                                     private_feature1=self.vis_decoder_feature)
-            # ir_vis_contrastive_loss = ir_contrastive_loss + vis_contrastive_loss
-            #
-            # # 拼接的特征一致性损失
-            # concat_feature_consistent_loss = self.fusion_feature_consistent_loss(self.ir_concat_features,
-            #                                                                      self.vis_concat_features)
-            #
-            # # 特征推远损失
-            # ir_push_loss = self.fusion_feature_push_away_loss(fusion_feature=self.ir_concat_features,
-            #                                                   private_feature=self.ir_detail_feature,
-            #                                                   common_feature=self.ir_global_feature)
-            # vis_push_loss = self.fusion_feature_push_away_loss(fusion_feature=self.vis_concat_features,
-            #                                                    private_feature=self.vis_detail_feature,
-            #                                                    common_feature=self.vis_global_feature)
-            # ir_vis_push_loss = ir_push_loss + vis_push_loss
-            #
-            # # 融合图像损失
-            # fusion_loss = self.fusion_img_loss(ir_img=self.ir_img, vis_img=self.vis_img, fus_img=self.fus_img)
-            #
-            # # 总损失
-            # loss = decoder_loss + ir_vis_contrastive_loss + concat_feature_consistent_loss + ir_vis_push_loss + fusion_loss
-
-            # 解码特征的一致性损失
-            # loss1 = self.private_decoded_align_loss(ir_private_feature=self.ir_detail_feature, vis_private_feature=self.vis_detail_feature, ir_decode_feature=self.ir_decoder_feature, vis_decode_feature=self.vis_decoder_feature)
-
-            # 共有特征、私有特征：构造2对对比损失
-            # loss2 = self.ir_vis_contrastive_loss(ir_global_feature=self.ir_global_feature, ir_private_feature=self.ir_detail_feature, vis_global_feature=self.vis_global_feature, vis_private_feature=self.vis_detail_feature)
-
-            # 融合特征相似度损失
-            # loss3 = self.fusion_feature_consistent_loss(ir_fusion_feature=self.ir_concat_features, vis_fusion_feature=self.vis_concat_features)
-
-            # 新增重建损失
-            # loss4 = self.reconstruction_img_loss(recon_img=self.recon_img, ir_img=self.ir_img, vis_img=self.vis_img)
-
             # 新增图像梯度损失
             loss1 = self.reconstruction_img_gradient_loss(recon_gradient=self.recon_gradient, fus_img=self.fus_img, ir_img=self.ir_img, vis_img=self.vis_img)
 
             # 仅计算融合损失
             loss2 = self.fusion_img_loss(ir_img=self.ir_img, vis_img=self.vis_img, fus_img=self.fus_img)
-            # loss2 = self.fusion_img_loss(ir_img=self.recon_gradient['recon_ir_gradient'].detach(), vis_img=self.recon_gradient['recon_vis_gradient'].detach(), fus_img=self.fus_img)
 
-            # loss = loss1["loss"] + loss2["loss"] + loss3["loss"] + loss4["loss"] + loss5["loss"] + loss6["loss"]
             loss = loss1["loss"] + loss2["loss"]
 
             # print(f"总损失为{loss}")
@@ -150,85 +103,7 @@ class FusionLoss:
             # 总损失
             loss = loss1['loss'] + loss2['loss']
             return {"loss": loss, "loss1_info": loss1["info"], "loss2_info": loss2["info"]}
-            # loss = loss1['loss']
-            # return {"loss": loss, "loss1_info": loss1["info"]}
 
-    def private_decoded_align_loss(self, ir_private_feature, vis_private_feature, ir_decode_feature, vis_decode_feature):
-        """
-        l2损失，进行强约束：私有特征和解码特征拉进
-        :param ir_private_feature:
-        :param vis_private_feature:
-        :param ir_decode_feature:
-        :param vis_decode_feature:
-        :return:
-        """
-        ir_private_feature, vis_private_feature, ir_decode_feature, vis_decode_feature = ir_private_feature.to(device), vis_private_feature.to(device), ir_decode_feature.to(device), vis_decode_feature.to(device)
-        # loss1 = F.mse_loss(ir_decode_feature, vis_private_feature)
-        # loss2 = F.mse_loss(vis_decode_feature, ir_private_feature)
-        # loss1 = F.l1_loss(ir_decode_feature, vis_private_feature)
-        # loss2 = F.l1_loss(vis_decode_feature, ir_private_feature)
-        # print(f"红外解码特征-可见光私有特征一致性损失： {loss1} 可见光解码特征-红外私有特征一致性损失：{loss2}")
-        # ssim = kornia.losses.SSIMLoss(11, reduction='mean')
-        loss1 = F.mse_loss(ir_decode_feature, vis_private_feature)
-        loss2 = F.mse_loss(vis_decode_feature, ir_private_feature)
-
-        cosine_ir_de = pearsonr(ir_decode_feature.flatten(), vis_private_feature.flatten())
-        cosine_vis_de = pearsonr(vis_decode_feature.flatten(), ir_private_feature.flatten())
-
-        loss = (loss1 + loss2) * self.loss_weight[3]
-        return {"loss": loss, "info": f"红外解码特征-可见光私有特征一致性损失：loss = {loss.item()}_{loss1 * self.loss_weight[3]}_cc={cosine_ir_de.item()} 可见光解码特征-红外私有特征一致性损失：{loss2 * self.loss_weight[3]}_cc={cosine_vis_de.item()}"}
-
-    def ir_vis_contrastive_loss(self, ir_global_feature, vis_global_feature, ir_private_feature, vis_private_feature, margin=10):
-        """
-        构造两队对比损失用于拉进共有特征、推远私有特征
-        :param anchor: 当前模态的公有特征
-        :param positive: 另外一个模态的公有特征
-        :param negative: 当前模态的私有特征
-        :param margin: 边界阈值
-        :return:
-        """
-        # # 用均方误差来定义距离
-        # loss_mse = nn.MSELoss()
-        # # 正样本度量
-        # dis_anchor_positive = F.l1_loss(ir_global_feature, vis_global_feature)
-        # # 负样本度量
-        # # 红外光
-        # dis_anchor_negative_ir = F.l1_loss(ir_global_feature, ir_private_feature)
-        # # 可见光
-        # dis_anchor_negative_vis = F.l1_loss(vis_global_feature, vis_private_feature)
-        # # 第一种：三元组对比损失，利用relu来替代 max（f, 0）
-        # # print(dis_anchor_positive.item(), dis_anchor_negative_ir.item(), dis_anchor_negative_vis.item())
-        # # loss1 = torch.relu(dis_anchor_positive - dis_anchor_negative_ir + margin)
-        # # loss2 = torch.relu(dis_anchor_positive - dis_anchor_negative_vis + margin)
-        # # loss = loss1 + loss2
-        #
-        # # 第二种：优化对比损失: 不要margin自适应动态调整
-        # t = 0.07
-        # loss1 = -torch.log(torch.exp(dis_anchor_positive / t) / (torch.exp(dis_anchor_positive / t) + torch.exp(dis_anchor_negative_ir / t)))
-        # loss2 = -torch.log(torch.exp(dis_anchor_positive / t) / (torch.exp(dis_anchor_positive / t) + torch.exp(dis_anchor_negative_vis / t)))
-        # # 通过正样本距离的倒数和负样本距离的比率来约束
-        # epsilon = 1e-6  # 防止除以零
-        # # relative_distance_loss = 1 / (dis_anchor_negative_ir / (dis_anchor_positive + epsilon) + dis_anchor_negative_vis / (dis_anchor_positive + epsilon))
-        # # loss = (loss1 + loss2 + relative_distance_loss) * self.loss_weight[4]
-        # loss = (loss1 + loss2) * self.loss_weight[4]
-        #
-        # # print(f"anchor 红外光-对比损失： {loss1} anchor 可见光-对比损失：{loss2}")
-        # return {"loss": loss, "info": f"{dis_anchor_positive.item() * self.loss_weight[4], dis_anchor_negative_ir.item() * self.loss_weight[4], dis_anchor_negative_vis.item() * self.loss_weight[4]}\nanchor 红外光-对比损失： {loss1.item()} anchor 可见光-对比损失：{loss2.item()}"}
-        epsilon = 1e-6  # 防止除以零
-
-        # ssim = kornia.losses.SSIMLoss(11, reduction='mean')
-
-        # cosine_global_loss = ssim(ir_global_feature, vis_global_feature)
-        # cosine_ir_private_loss = ssim(ir_global_feature, ir_private_feature)
-        # cosine_vis_private_loss = ssim(vis_global_feature, vis_private_feature)
-        # cosine_private_loss = ssim(ir_private_feature, vis_private_feature)
-        cosine_global_loss = pearsonr(ir_global_feature.flatten(), vis_global_feature.flatten())
-        cosine_private_loss = pearsonr(ir_private_feature.flatten(), vis_private_feature.flatten())
-
-        # loss = (cosine_ir_private_loss + cosine_vis_private_loss) / (cosine_global_loss + epsilon)
-        loss = ((cosine_private_loss ** 2) / (cosine_global_loss + 1.01)) * self.loss_weight[4]
-        # return {"loss": loss, "info": f"公有特征损失:{cosine_global_loss.item()} 红外私有特征损失：{cosine_ir_private_loss.item()} 可见光私有特征损失：{cosine_vis_private_loss.item()}"}
-        return {"loss": loss, "info": f"对比损失: loss = {loss.item()}_公有特征相似系数损失：{cosine_global_loss.item()}_私有特征相似系数：{cosine_private_loss.item()}"}
 
     def fusion_feature_consistent_loss(self, ir_fusion_feature, vis_fusion_feature):
         """
@@ -249,15 +124,6 @@ class FusionLoss:
         loss = (loss1 + loss2 + loss3)
         return {"loss": loss, "info": f"融合特征一致性损失：loss = {loss.item()} 融合特征ssim损失：{fusion_feature_loss.item()}_特征相似系数：{cc.item()}_mse损失：{loss3.item()}"}
 
-        # cosine_sim = F.cosine_similarity(ir_fusion_feature, vis_fusion_feature)
-        # loss = (1 - cosine_sim.mean()) * self.loss_weight[5]
-        # loss = cosine_sim * self.loss_weight[5]
-        # loss = F.l1_loss(ir_fusion_feature, vis_fusion_feature) * self.loss_weight[5]
-        # loss = F.l1_loss(ir_fusion_feature, vis_fusion_feature)
-        # loss = F.mse_loss(ir_fusion_feature, vis_fusion_feature)
-        # print(f"fusion_feature_consistent_loss :{loss.item()}")
-
-        # return {"loss": loss, "info": f"融合特征相似度为:{cc.item()}"}
 
     def fusion_feature_push_away_loss(self, fusion_feature, private_feature, common_feature):
         """
