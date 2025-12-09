@@ -199,7 +199,7 @@ tail -f ./Logs/nohup/2024-1119-1355_time.log
 control + z
 ```
 
-## Experiment Results
+## 6. Experiment Results
 
 ### Registration + Fusion Comparison Visualization
 ![Registration + Fusion](./Figures/PaperAcademic/figure3.png)
