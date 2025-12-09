@@ -67,6 +67,7 @@
 </div>
 
 ---
+<hr style="border: 0; height: 1px; background: #ddd;">
 
 ## 1. Introduction
 We propose an end-to-end infrared-visible image fusion network (ME-PMA) with feature-level registration, featuring:
@@ -82,6 +83,8 @@ Key Components:
 - **Feature Encoder**: SFE, UIB_Block, and Restormer
 - **MSPA**: Multi-Scale Progressive Alignment module
 - **Feature Decoder**: FFCM fusion and FRRB reconstruction
+
+---
 
 ### MSPA Module
 ![Module Structure](./Figures/PaperAcademic/figure2.png)
@@ -250,7 +253,6 @@ python ./Util/metrics_reg.py
 ### Registration + Fusion Optimization Results
 ![Registration + Fusion](./Figures/PaperAcademic/figure5.png)
 
----
 
 ### 📊 Table 1: Quantitative Comparison of Registration + Fusion Methods — Detailed Results
 *(Red bold = best, Orange bold = second-best)*  
