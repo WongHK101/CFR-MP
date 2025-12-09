@@ -239,7 +239,9 @@ python ./Util/metrics_reg.py
 ```
 
 > For convenience, the provided metric scripts allow you to directly reproduce the results reported in the paper.
-> We provide the complete fusion results for direct and unbiased metric evaluation. For convenience, resized input images are also included to help reproduce the results. While the overall outputs remain consistent, minor pixel-level differences may occur due to the resizing operation. 
+
+> We provide the complete fusion results for direct and unbiased metric evaluation. For convenience, resized input images are also included to help reproduce the results. While the overall outputs remain consistent, minor pixel-level differences may occur due to the resizing operation.
+
 > Note that the registration evaluation metrics are the average of the three datasets.
 
 
