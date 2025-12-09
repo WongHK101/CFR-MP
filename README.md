@@ -204,9 +204,12 @@ control + z
 ### Registration + Fusion Comparison Visualization
 ![Registration + Fusion](./Figures/PaperAcademic/figure3.png)
 
+---
+
 ### Joint Optimization Comparison Visualization
 ![Joint Optimization](./Figures/PaperAcademic/figure4.png)
 
+---
 
 ### Evaluation Metrics
 
@@ -223,6 +226,8 @@ You can get our detailed quantitative evaluation metrics, using the following ex
 python ./Util/metrics_fus.py
 ```
 
+---
+
 ### Registration Evaluation Metrics
 - $Q_{MI↑}$
 - $Q_{MS-SSIM↑}$
@@ -237,12 +242,15 @@ python ./Util/metrics_reg.py
 
 > Note that the registration evaluation metrics are the average of the three datasets.
 
+---
+
 ### Experiment Results Visualization
 
 
 ### Registration + Fusion Optimization Results
 ![Registration + Fusion](./Figures/PaperAcademic/figure5.png)
 
+---
 
 ### 📊 Table 1: Quantitative Comparison of Registration + Fusion Methods — Detailed Results
 *(Red bold = best, Orange bold = second-best)*  
@@ -255,7 +263,7 @@ python ./Util/metrics_reg.py
 
 📌 *Note: In each column, values in **red bold** are the best, and values in **orange bold** are the second-best.*
 
-
+---
 
 ### Joint Optimization Results
 ![Joint Optimization](./Figures/PaperAcademic/figure6.png)
@@ -270,19 +278,22 @@ python ./Util/metrics_reg.py
 
 📌 *Note: In each column, values in **red bold** are the best, and values in **orange bold** are the second-best.*
 
-
+---
 
 ### Only Registration Performance Comparison Results
 ![Registration Performance](./Figures/PaperAcademic/figure7.png)
 
+---
 
 ### Parameter Analysis: Joint Optimization
 ![Parameter Analysis Joint Optimization](./Figures/PaperAcademic/figure9.png)
 
+---
 
 ### Object Detection and Semantic Segmentation
 The related models will be updated and uploaded soon.
 
+---
 
 ### Model: Parameter Quantity + Calculation
 ```python
