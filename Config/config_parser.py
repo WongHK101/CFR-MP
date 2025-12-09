@@ -60,8 +60,6 @@ class ConfigManager:
                             help='训练第二阶段加载，已经完成训练的模型参数路径')
         parser.add_argument('--phase2_model_id', type=str, default=config.get('phase2_model_id'),
                             help='训练唯一标识符，与第一阶段相同；保存模型在同一个文件夹下')
-
-
         parser.add_argument('--size_mode', type=str, default=config.get('size_mode'), choices=['crop', 'resize'],
                             help='设置加载图像的方式，如果为 crop 就 在原图上进行随机裁剪，如果为 resize 就对原图进行rezie；')
         args = parser.parse_args()
