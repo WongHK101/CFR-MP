@@ -313,6 +313,34 @@ If you use this project's code, please cite our paper:
 }
 ```
 
+## 🥰 Acknowledgments
+
+The overall architecture of this project was independently designed by the author.  
+However, parts of the implementation reference the following excellent open-source works:
+
+### Code References
+- **CDDFuse: Correlation-Driven Dual-Branch Feature Decomposition for Multi-Modality Image Fusion (CVPR 2023)**
+  https://github.com/haozixiang1228/MMIF-CDDFuse  
+
+- **Correlation-aware Coarse-to-Fine MLPs for Deformable Medical Image Registration (CVPR 2024)**
+  https://github.com/MungoMeng/Registration-CorrMLP  
+
+- **MobileNetv4 Implementations**  
+  - MobileNetv4-1: https://github.com/jiaowoguanren0615/MobileNetV4  
+  - MobileNetv4-2: https://github.com/jaiwei98/MobileNetV4-pytorch  
+
+### Metric Implementation
+- **Analysis of Quality Objective Assessment Metrics for Visible and Infrared Image Fusion (Journal of Image and Graphics 2023)**  
+  https://github.com/sunbinuestc/VIF-metrics-analysis  
+
+### Experimental Visualization Tools
+- **MulimgViewer** (for local detail visualization)  
+  https://github.com/nachifur/MulimgViewer  
+
+We sincerely appreciate the open-source community for providing valuable tools, resources, and inspiration that greatly supported the development of this project.
+
+
+
 ## License
 This project uses the MIT License. See [LICENSE](LICENSE) file.
 
