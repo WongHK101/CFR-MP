@@ -7,6 +7,7 @@
 <!-- ==== Paper & Code Badges ==== -->
 [![Status](https://img.shields.io/badge/Status-Accepted-brightgreen?style=for-the-badge)]()
 [![Journal](https://img.shields.io/badge/Information%20Fusion-128(2026)%20103960-orange?style=for-the-badge&logo=Elsevier&logoColor=white)](https://doi.org/10.1016/j.inffus.2025.103960)
+
 [![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.inffus.2025.103960-blue?style=for-the-badge)](https://doi.org/10.1016/j.inffus.2025.103960)
 [![Code](https://img.shields.io/badge/Code-ME--PMA-black?style=for-the-badge&logo=github)](https://github.com/yidamyth/ME-PMA)
 
