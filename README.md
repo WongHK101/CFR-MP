@@ -67,7 +67,6 @@
 </div>
 
 ---
-<hr style="border: 0; height: 1px; background: #ddd;">
 
 ## 1. Introduction
 We propose an end-to-end infrared-visible image fusion network (ME-PMA) with feature-level registration, featuring:
