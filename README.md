@@ -298,21 +298,6 @@ cd ./ME-PMA
 python -m Model.Architecture.RegImageFusModel
 ```
 
-
-## Citation
-If you use this project's code, please cite our paper:
-```
-@article{2026_ME-PMA,
-  title   = {Joint multi-view embedding with progressive multi-scale alignment for unaligned infrared-visible image fusion},
-  author  = {Chen, Yida and Zhang, Yafei and Li, Huafeng and Yu, Zhengtao and Liu, Yu},
-  journal = {Information Fusion},
-  volume  = {128},
-  pages   = {103960},
-  year    = {2026},
-  doi     = {10.1016/j.inffus.2025.103960}
-}
-```
-
 ## 🥰 Acknowledgments
 
 The overall architecture of this project was independently designed by the author. However, parts of the implementation reference the following excellent open-source works:
@@ -338,6 +323,20 @@ The overall architecture of this project was independently designed by the autho
 
 We sincerely appreciate the open-source community for providing valuable tools, resources, and inspiration that greatly supported the development of this project.
 
+
+## Citation
+If you use this project's code, please cite our paper:
+```
+@article{2026_ME-PMA,
+  title   = {Joint multi-view embedding with progressive multi-scale alignment for unaligned infrared-visible image fusion},
+  author  = {Chen, Yida and Zhang, Yafei and Li, Huafeng and Yu, Zhengtao and Liu, Yu},
+  journal = {Information Fusion},
+  volume  = {128},
+  pages   = {103960},
+  year    = {2026},
+  doi     = {10.1016/j.inffus.2025.103960}
+}
+```
 
 
 ## License
