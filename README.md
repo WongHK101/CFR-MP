@@ -5,7 +5,7 @@
 <br>
 
 <!-- ==== Paper & Code Badges ==== -->
-[![Status](https://img.shields.io/badge/Status-Accepted-brightgreen?style=for-the-badge)]()
+[![Status](https://img.shields.io/badge/Status-Accepted-brightgreen?style=for-the-badge)](https://doi.org/10.1016/j.inffus.2025.103960)
 [![Journal](https://img.shields.io/badge/Information%20Fusion-128(2026)%20103960-orange?style=for-the-badge&logo=Elsevier&logoColor=white)](https://doi.org/10.1016/j.inffus.2025.103960)
 
 [![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.inffus.2025.103960-blue?style=for-the-badge)](https://doi.org/10.1016/j.inffus.2025.103960)
@@ -53,7 +53,7 @@
 ![Image Registration](https://img.shields.io/badge/Image-Registration-ffcc99?style=flat-square-4c1)
 
 <div style="background-color: #fff8c5; color: #000000; padding: 10px; border-left: 4px solid #f0ad4e; border-radius: 4px;">
-  <strong>	Our paper is currently under peer review. We sincerely appreciate your interest and support. The README will be further improved after acceptance.</strong>
+  <strong> Our paper is currently under peer review. We sincerely appreciate your interest and support. The README will be further improved after acceptance.</strong>
 </div>
 
 <br>
