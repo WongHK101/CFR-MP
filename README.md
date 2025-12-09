@@ -2,30 +2,19 @@
 
 # **Joint Multi-View Embedding with Progressive Multi-Scale Alignment for Unaligned Infrared-Visible Image Fusion**
 
+### **ME-PMA — Accepted (Inf. Fusion '26)**
+
 <br>
 
 <!-- ==== Paper & Code Badges ==== -->
 [![Status](https://img.shields.io/badge/Status-Accepted-brightgreen?style=for-the-badge)]()
 [![Journal](https://img.shields.io/badge/Information%20Fusion-128(2026)%20103960-orange?style=for-the-badge&logo=Elsevier&logoColor=white)](https://doi.org/10.1016/j.inffus.2025.103960)
-
 [![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.inffus.2025.103960-blue?style=for-the-badge)](https://doi.org/10.1016/j.inffus.2025.103960)
-
 [![Code](https://img.shields.io/badge/Code-ME--PMA-black?style=for-the-badge&logo=github)](https://github.com/yidamyth/ME-PMA)
-<br>
 
-
-<div align="center">
-
-
-
-
-
+<br><br>
 
 ---
-<div align="center">
-
-
-<div align="center">
 
 ## 👨‍💻 **Authors**
 
@@ -36,8 +25,6 @@
 | **Huafeng Li (a, ✉ corresponding author)** | [![ORCID](https://img.shields.io/badge/0000--0003--2462--6174-A6CE39?style=flat&logo=ORCID&logoColor=white)](https://orcid.org/0000-0003-2462-6174) |
 | **Zhengtao Yu (a)** | [![ORCID](https://img.shields.io/badge/0000--0003--1094--5668-A6CE39?style=flat&logo=ORCID&logoColor=white)](https://orcid.org/0000-0003-1094-5668) |
 | **Yu Liu (b)** | [![ORCID](https://img.shields.io/badge/0000--0003--2211--3535-A6CE39?style=flat&logo=ORCID&logoColor=white)](https://orcid.org/0000-0003-2211-3535) |
-
-</div>
 
 <br>
 
