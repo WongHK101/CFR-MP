@@ -325,7 +325,7 @@ We sincerely appreciate the open-source community for providing valuable tools, 
 
 
 ## Citation
-If you use this project's code, please cite our paper:
+If this work benefits your research, a citation to our paper would be greatly appreciated:
 ```
 @article{2026_ME-PMA,
   title   = {Joint multi-view embedding with progressive multi-scale alignment for unaligned infrared-visible image fusion},
