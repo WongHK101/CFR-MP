@@ -324,7 +324,7 @@ The overall architecture of this project was independently designed by the autho
 We sincerely appreciate the open-source community for providing valuable tools, resources, and inspiration that greatly supported the development of this project.
 
 
-## Citation
+## 😘 Citation
 If this work benefits your research, a citation to our paper would be greatly appreciated:
 ```
 @article{2026_ME-PMA,
@@ -339,15 +339,15 @@ If this work benefits your research, a citation to our paper would be greatly ap
 ```
 
 
-## License
+## 🔖 License
 This project uses the MIT License. See [LICENSE](LICENSE) file.
 
 
-## Contact
+## 😃 Contact
 Thank you for your attention. If you have any questions, please contact us by email at yida_myth@163.com. We will get back to you as soon as possible, and you may also raise your questions through the Issues page.
 
 
-## Star History
+## 🙌 Star History
 
 <div style="text-align: center;">
 <picture>
