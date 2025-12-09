@@ -2,8 +2,6 @@
 
 # **Joint Multi-View Embedding with Progressive Multi-Scale Alignment for Unaligned Infrared-Visible Image Fusion**
 
-### **ME-PMA — Accepted (Inf. Fusion '26)**
-
 <br>
 
 <!-- ==== Paper & Code Badges ==== -->
@@ -12,7 +10,7 @@
 [![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.inffus.2025.103960-blue?style=for-the-badge)](https://doi.org/10.1016/j.inffus.2025.103960)
 [![Code](https://img.shields.io/badge/Code-ME--PMA-black?style=for-the-badge&logo=github)](https://github.com/yidamyth/ME-PMA)
 
-<br><br>
+<br>
 
 ## 👨‍💻 **Authors**
 
