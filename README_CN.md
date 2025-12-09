@@ -53,8 +53,8 @@
 
 <div align="center">
 <h3>
-  <a href="./README_CN.md">README-中文版</a> |
-  <a href="./README.md">README-英文版</a>
+  <a href="./README.md">README-英文版</a> |
+  <a href="./README_CN.md">README-中文版</a> 
 </h3>
 </div>
 
