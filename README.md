@@ -60,7 +60,10 @@
 <br>
 
 <div align="center">
-[README-Chinese](./README_CN.md) | [README-English](./README.md)
+<h3>
+  <a href="./README_CN.md">README-Chinese</a> |
+  <a href="./README.md">README-English</a>
+</h3>
 </div>
 
 ## 1. Introduction
