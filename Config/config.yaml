@@ -20,10 +20,10 @@ num_step: 150 # 每隔多少轮测试一下
 train_paths:
 
 
-  RoadScene_train: "./Dataset/RoadScene/RoadS_train"
+  RoadScene_train: "./DataSet/IVIF/RoadScene/RoadS_train"
   # 其它数据路径
-  example_train: "./Dataset/example/train"
-  Test: "./Dataset/RoadScene/RoadS_test"
+  example_train: "./DataSet/example/train"
+  Test: "./DataSet/IVIF/RoadScene/RoadS_test"
 
 
 # 第二阶段训练

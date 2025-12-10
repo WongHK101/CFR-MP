@@ -102,7 +102,7 @@ def test():
 
 
 if __name__ == '__main__':
-    test_path = {'RoadScene': './DataSet/IVIF/RoadScene/RoadS_test', 'M3FD': './DataSet/IVIF/M3FD/test', 'MSRS': './DataSet/IVIF/MSRS/test'}
+    test_path = {'RoadScene': './DataSet/IVIF/RoadScene/RoadS_test', 'M3FD': './DataSet/IVIF/M3FD/M3FD_test', 'MSRS': './DataSet/IVIF/MSRS/MSRS_test'}
     parser = argparse.ArgumentParser()
     parser.add_argument('--test_path', type=str, default=test_path['RoadScene'],
                         help='测试集路径')
