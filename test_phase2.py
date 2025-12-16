@@ -45,7 +45,7 @@ def test():
 
 
     # 初始化模型方法2: 加载模型全部参数
-    model = torch.load(args.model_path, map_location=device)
+    model = torch.load(args.model_path, map_location=device, weights_only=False)
     model.registration = False
     model.use_bn = True
     model.distil = False
@@ -126,9 +126,9 @@ def test():
 
 
 if __name__ == '__main__':
-    test_path = {'RoadScene': './DataSet/IVIF/RoadScene/RoadS_test', 'M3FD': './DataSet/IVIF/M3FD/M3FD_test', 'MSRS': './DataSet/IVIF/MSRS/MSRS_test'}
+    test_path = {'transmissionline_match': './DataSet/IVIF/transmissionline_match/test', 'transmissionline': './DataSet/IVIF/transmissionline/test', 'PV-origin': './DataSet/IVIF/PV-origin/PV_test', 'RoadScene': './DataSet/IVIF/RoadScene/RoadS_test', 'M3FD': './DataSet/IVIF/M3FD/M3FD_test', 'MSRS': './DataSet/IVIF/MSRS/MSRS_test'}
     parser = argparse.ArgumentParser()
-    parser.add_argument('--test_path', type=str, default=test_path['RoadScene'],
+    parser.add_argument('--test_path', type=str, default=test_path['transmissionline'],
                         help='测试集路径')
     parser.add_argument('--model_path', type=str,
                         default='./Model/Parameters/24-1119-1001/MoveRegImageFusModel-best.pth',
@@ -147,6 +147,6 @@ if __name__ == '__main__':
 
     # 数据变换
     # transform = DataTransform(img_size='original', train_mode='test')  # 'original'
-    transform = DataTransform(img_size=[304, 400], train_mode='test')  # 256
+    transform = DataTransform(img_size=[1024, 1280], train_mode='test')  # 256
     # 主函数
     test()

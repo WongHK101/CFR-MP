@@ -12,3 +12,7 @@ gen
 
 # Python
 __pycache__/
+
+DataSet/
+old tool/
+*.sh

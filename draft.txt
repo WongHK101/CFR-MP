@@ -1,0 +1,36 @@
+配准阶段：
+
+GPT方法:
+PV数据集:
+python align_rgb_thermal_fit_v2.py `
+   --rgb_dir "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\PV-origin\PV_test\vis" `
+   --th_dir  "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\PV-origin\PV_test\ir" `
+   --out_dir "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\PV-origin\PV_test\fit"
+
+TL数据集:
+python align_rgb_thermal_fit_v2.py `
+   --rgb_dir "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\transmissionline\test\vis" `
+   --th_dir  "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\transmissionline\test\ir" `
+   --out_dir "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\transmissionline\test\fit_exif"
+
+MP阶段：
+修改test_phase2.py中路径，增加TL或PV路径到--test_path中
+python test_phase2.py --test_path ./DataSet/IVIF/transmissionline/test
+
+
+环境配置：
+conda create -n MP5 -y python=3.10 pip
+conda activate MP5
+python -m pip install -U pip setuptools wheel
+
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+pip install `
+  numpy==1.26.4 scipy==1.12.0 matplotlib==3.8.3 pillow==10.2.0 `
+  opencv-python `
+  timm==0.9.16 pyyaml==6.0.1 tensorboard==2.14.0 `
+  scikit-image==0.22.0 scikit-learn==1.5.1 `
+  einops==0.7.0 kornia==0.7.2 tqdm==4.66.1 `
+  thop pytorch-msssim==1.0.0 torchsummary==1.5.1 audtorch==0.6.4 setproctitle==1.3.3 piexif==1.1.3
+测试：
+python -c "import numpy,cv2,PIL,matplotlib,torch; print('numpy',numpy.__version__); print('cv2',cv2.__version__); print('torch',torch.__version__); print('cuda',torch.cuda.is_available())"
