@@ -2,20 +2,26 @@
 
 GPT方法:
 PV数据集:
-python align_rgb_thermal_fit_v2.py `
-   --rgb_dir "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\PV-origin\PV_test\vis" `
-   --th_dir  "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\PV-origin\PV_test\ir" `
-   --out_dir "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\PV-origin\PV_test\fit"
+python cfrv10.py `
+  --rgb_dir D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\PV-origin\PV_test\vis `
+  --thermal_dir  D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\PV-origin\PV_test\ir `
+  --out_dir D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\PV-origin\PV_test\fitv10 `
+  --fit_samples 80 `
+  --comparison
 
 TL数据集:
-python align_rgb_thermal_fit_v2.py `
+python cfr.py `
    --rgb_dir "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\transmissionline\test\vis" `
    --th_dir  "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\transmissionline\test\ir" `
-   --out_dir "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\transmissionline\test\fit_exif"
+   --out_dir "D:\1_paper\experiment\12_ME-PMA\ME-PMA\DataSet\IVIF\transmissionline\test\fit"
 
 MP阶段：
 修改test_phase2.py中路径，增加TL或PV路径到--test_path中
+python test_phase2.py --test_path ./DataSet/IVIF/PV-origin/PV_test
 python test_phase2.py --test_path ./DataSet/IVIF/transmissionline/test
+
+赋exif
+python transfer_exif.py --src ".\DataSet\IVIF\PV-origin\PV_test\fit\image\image-fit" --dst ".\DataSet\IVIF\PV-origin\PV_test\Results\UnAligned\fus_rgb"
 
 
 环境配置：

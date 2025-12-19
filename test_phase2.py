@@ -128,7 +128,7 @@ def test():
 if __name__ == '__main__':
     test_path = {'transmissionline_match': './DataSet/IVIF/transmissionline_match/test', 'transmissionline': './DataSet/IVIF/transmissionline/test', 'PV-origin': './DataSet/IVIF/PV-origin/PV_test', 'RoadScene': './DataSet/IVIF/RoadScene/RoadS_test', 'M3FD': './DataSet/IVIF/M3FD/M3FD_test', 'MSRS': './DataSet/IVIF/MSRS/MSRS_test'}
     parser = argparse.ArgumentParser()
-    parser.add_argument('--test_path', type=str, default=test_path['transmissionline'],
+    parser.add_argument('--test_path', type=str, default=test_path['PV-origin'],
                         help='测试集路径')
     parser.add_argument('--model_path', type=str,
                         default='./Model/Parameters/24-1119-1001/MoveRegImageFusModel-best.pth',
