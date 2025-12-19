@@ -1,0 +1,125 @@
+1. 配置身份（只需一次，全局生效）
+git config --global user.name "WongHK101"
+git config --global user.email "hhq3180069@qq.com"
+
+2. 管理远端仓库
+* 查看当前远端地址：
+git remote -v
+
+* 修改远端地址（换仓库时用）：
+git remote set-url origin https://github.com/你的用户名/新仓库名.git
+
+* 添加一个新的远端（可选）：
+git remote add backup https://github.com/你的用户名/另一个仓库.git
+
+## 3. 日常开发流程
+3.1 查看状态
+git status
+
+3.2 添加改动
+* 添加所有改动：
+git add .
+
+* 添加单个文件：
+git add <file>
+
+查看暂存区文件,绿色的 modified 或 new file 标记的文件，就是已被 git add 的文件
+git status  
+
+3.3 丢弃改动
+* 丢弃未暂存改动：
+git restore <file>
+
+* 丢弃所有未暂存改动：
+git restore .
+
+* 撤销已暂存（取消 `git add`）：
+git restore --staged <file>
+
+### 3.4 提交本地
+git commit -m "提交说明"
+
+## 4. 推送到远端
+
+首次推送并建立跟踪：
+git push -u origin main
+以后直接：
+git push
+
+## 5. 常用查询
+* 查看提交记录：
+git log --oneline
+
+* 查看所有作者及提交数：
+git shortlog -s -n
+
+已推送的提交想撤销
+git revert 91f69e2
+
+拉取仓库代码覆盖本地
+git fetch origin
+git reset --hard origin/main
+
+只想拿那一个文件而不动其它：
+git restore --source=origin/main -- GIT.txt
+
+日常更新（推荐线性历史，本地有改动优先方案）
+git pull --rebase origin main
+# 有未提交改动先暂存
+# git stash -u && git pull --rebase origin main && git stash pop
+
+先看再合并
+git fetch origin
+git diff HEAD..origin/main
+git rebase origin/main 
+
+强制与远端一致（覆盖本地）
+git fetch origin
+git reset --hard origin/main
+git clean -fd   # 如需删未跟踪文件
+
+快速择法
+
+线性更新：pull --rebase
+
+保守合并：pull --no-rebase（默认）
+
+只取某个文件：restore --source
+
+强制一致：reset --hard (+ clean)
+
+先看再决定：fetch + diff
+git fetch origin
+git diff HEAD..origin/main 如果返回空则远端和本地无区别，可以再用git log HEAD..origin/main检验，如果还是空就真的没区别
+
+判定是否领先/落后
+git fetch origin
+git rev-list --left-right --count HEAD...origin/main  
+
+如果本地领先云端（ahead>0, behind=0）： git add → git commit → git push
+本地落后或双方分叉（behind>0，可能 ahead>0）：git add . → git commit -m "msg" → git pull --rebase --autostash origin main → git push
+仅想合并而非改写历史：git pull --no-rebase origin main → git push
+强制与远端一致（覆盖本地）：git fetch origin → git reset --hard origin/main → git clean -fd（删除未跟踪文件）
+
+对比表
+目标	用法	原理	是否改提交历史	未提交改动	冲突处理	典型场景
+只看远端变化	git fetch origin → git diff/log HEAD..origin/main	仅更新远端跟踪分支与 FETCH_HEAD	否	不影响	无	先看再合并
+线性引入远端提交	git pull --rebase origin main 或 git fetch → git rebase origin/main	把你本地已提交“摘下→贴到”远端之后	是（本地提交哈希变）	用 --autostash 自动保存	有冲突则逐个解决后 --continue	干净历史，便于审阅
+合并引入远端提交	git pull --no-rebase origin main 或 git fetch → git merge origin/main	生成一次合并提交	否	不影响	有冲突按文件解决后提交	保留分叉，历史不改写
+只取远端的某个文件	git restore --source=origin/main -- <file>	用远端快照覆盖该文件	否	会覆盖该文件的未提交改动	仅该文件可能冲突	精准同步单文件
+本地强制与远端完全一致	git fetch origin → git reset --hard origin/main → git clean -fd	移动分支指针并重写工作区、删未跟踪	否（但清掉本地未提交）	全部丢失	无	回滚到远端状态、清理脏工作区
+git remote set-url origin https://github.com/WongHK101/TGS-improved.git
+
+
+提交一个文件的暂存
+git add GIT.txt
+查看暂存区文件列表
+git status
+移除单个暂存文件
+git rm --cached example.txt
+移除所有暂存文件
+git reset
+提交本地
+git commit -m "备注"
+提交远端
+git push
